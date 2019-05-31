@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>kp.company</groupId>
+	<artifactId>KP_Seam01</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+
+	<modules>
+		<module>KP_Seam01-ejb</module>
+		<module>KP_Seam01-web</module>
+		<module>KP_Seam01-ear</module>
+	</modules>
+
+	<properties>
+		<maven.compiler.source>12</maven.compiler.source>
+		<maven.compiler.target>12</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.javadoc.plugin.version>3.1.0</maven.javadoc.plugin.version>
+		<maven.ejb.plugin.version>3.0.1</maven.ejb.plugin.version>
+		<maven.war.plugin.version>3.2.3</maven.war.plugin.version>
+		<maven.ear.plugin.version>3.0.1</maven.ear.plugin.version>
+
+		<jboss.jaxrs.version>1.0.2.Final</jboss.jaxrs.version>
+		<javax.persistence.version>2.2</javax.persistence.version>
+		<hibernate.validator.version>6.0.16.Final</hibernate.validator.version>
+		<wildfly.maven.plugin.version>2.0.1.Final</wildfly.maven.plugin.version>
+		<javax.jws.api.version>1.1</javax.jws.api.version>
+		<jaxws.api.version>2.3.1</jaxws.api.version>
+
+		<jboss.version>1.0.0.Final</jboss.version>
+		<jboss.hostname>127.0.0.1</jboss.hostname>
+		<jboss.username>admin</jboss.username>
+		<jboss.password>mikimiki</jboss.password>
+		<jboss.port>9990</jboss.port>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Define the version of the EJB jar so that we don't need to repeat ourselves in every module -->
+			<dependency>
+				<groupId>kp.company</groupId>
+				<artifactId>KP_Seam01-ejb</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<type>ejb</type>
+			</dependency>
+			<!-- Define the version of the WAR so that we don't need to repeat ourselves in every module -->
+			<dependency>
+				<groupId>kp.company</groupId>
+				<artifactId>KP_Seam01-web</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			<!-- Define the version of JBoss' Java EE APIs we want to import. -->
+			<!-- Any dependencies from org.jboss.spec will have their version defined by this BOM. -->
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-7.0</artifactId>
+				<version>${jboss.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>javax.jws</groupId>
+			<artifactId>javax.jws-api</artifactId>
+			<version>${javax.jws.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>${jaxws.api.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-maven-plugin</artifactId>
+					<version>${wildfly.maven.plugin.version}</version>
+					<!-- Plugin configured to skip deployment for all modules. -->
+					<!-- Then enabled only in the ear module. -->
+					<configuration>
+						<skip>true</skip>
+						<hostname>${jboss.hostname}</hostname>
+						<username>${jboss.username}</username>
+						<password>${jboss.password}</password>
+						<port>${jboss.port}</port>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven.javadoc.plugin.version}</version>
+					<configuration>
+						<reportOutputDirectory>${basedir}/docs</reportOutputDirectory>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

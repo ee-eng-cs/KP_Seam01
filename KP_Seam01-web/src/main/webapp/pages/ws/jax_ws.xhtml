@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/resources/templates/layout.xhtml">
+
+	<ui:define name="menu">
+		<h:panelGroup>
+			<h:commandLink value="Company"
+				action="#{departmentManagedBean.homeCompanyAction}" />
+			&#160;&#187;&#160;Show Reports (XML Web Services)
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="ws-host">
+			<h:panelGrid columns="3"
+				columnClasses="ws-host-prompt,ws-host-field,ws-host-button"
+				rules="rows">
+					Web Services Host
+					<h:inputText id="host" size="10" value="#{endpointData.host}" />
+				<h:commandButton value="Update" action="JAX-WS" />
+			</h:panelGrid>
+		</div>
+		<div style="clear: both;"></div>
+	
+		<div class="ws-content">
+			<table class="ws">
+				<tr>
+					<td colspan="3" class="ws-b"><h:outputLink
+							value="http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/ws/company"
+							target="_blank">
+							<f:param name="wsdl" />
+						WSDL Location URL
+					</h:outputLink></td>
+				</tr>
+				<tr>
+					<td class="ws-g">Department Name</td>
+					<td class="ws-g">Employee Last Name</td>
+					<td class="ws-g"></td>
+				</tr>
+				<tr>
+					<td class="ws-r"><h:inputText id="name" size="20"
+							maxlength="30" value="#{companyWSClient.departmentName}" /></td>
+					<td class="ws-r"><h:inputText id="lastName" size="20"
+							maxlength="30" value="#{companyWSClient.employeeLastName}" /></td>
+					<td class="ws-r"><h:commandLink value="Find Employees"
+							action="#{companyWSClient.lookupAction}" /></td>
+				</tr>
+			</table>
+		</div>
+
+		<div style="clear: both;"></div>
+		<h:messages styleClass="errors" />
+		<div style="clear: both;"></div>
+
+		<h:dataTable border="1" cellpadding="5"
+			columnClasses="list-col,list-col,list-col,list-col" frame="box"
+			headerClass="list-header" rowClasses="list-row" rules="all"
+			styleClass="list-all" value="#{employeesWS}" var="emp"
+			rendered="#{not empty employeesWS}">
+			<f:facet name="header">Employees</f:facet>
+			<h:column>
+				<f:facet name="header">Department</f:facet>
+			    #{emp.department.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">First Name</f:facet>
+				#{emp.firstName}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Last Name</f:facet>
+				#{emp.lastName}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Title</f:facet>
+				#{emp.title.name}
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>

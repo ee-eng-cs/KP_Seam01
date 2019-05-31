@@ -1,0 +1,3 @@
+CREATE DATABASE kp_seam01;
+
+GRANT ALL PRIVILEGES ON kp_seam01.* TO kp@localhost IDENTIFIED BY 'mikimiki';

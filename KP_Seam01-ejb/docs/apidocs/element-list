@@ -1,0 +1,9 @@
+kp.company.controller
+kp.company.data
+kp.company.domain
+kp.company.util
+kp.company.ws
+kp.company.ws.rest
+kp.company.ws.xml
+kp.company.ws.xml.client
+kp.company.ws.xml.service

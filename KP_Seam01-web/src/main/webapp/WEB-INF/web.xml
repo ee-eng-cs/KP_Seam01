@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+	<description>KP Seam 01 web.xml</description>
+	<servlet>
+		<servlet-name>CompanyWS</servlet-name>
+		<servlet-class>kp.company.ws.xml.service.CompanyWSImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CompanyWS</servlet-name>
+		<url-pattern>/ws/company</url-pattern>
+	</servlet-mapping>
+</web-app>
+<!-- Java EE doesn't require 'web.xml' - it was added only for JAX-WS -->

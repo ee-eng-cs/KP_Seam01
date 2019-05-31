@@ -1,0 +1,16 @@
+.settings/
+docs/apidocs
+KP_Seam01-ear/.settings
+KP_Seam01-ear/target
+KP_Seam01-ear/.classpath
+KP_Seam01-ear/.project
+KP_Seam01-ejb/.settings
+KP_Seam01-ejb/target
+KP_Seam01-ejb/.classpath 
+KP_Seam01-ejb/.project
+KP_Seam01-web/.settings
+KP_Seam01-web/target
+KP_Seam01-web/.classpath 
+KP_Seam01-web/.project
+target/
+.project

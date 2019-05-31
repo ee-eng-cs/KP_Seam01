@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+              version="2.3">
+	<navigation-rule>
+      <from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>homeCompany</from-outcome>
+			<to-view-id>/pages/company/home.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>JAX-WS</from-outcome>
+			<to-view-id>/pages/ws/jax_ws.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>JAX-RS</from-outcome>
+			<to-view-id>/pages/ws/jax_rs.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listDepartments</from-outcome>
+			<to-view-id>/pages/departments/list.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>editDepartment</from-outcome>
+			<to-view-id>/pages/departments/edit.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>confirmDeleteDepartment</from-outcome>
+			<to-view-id>/pages/departments/confirmDelete.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listEmployees</from-outcome>
+			<to-view-id>/pages/employees/list.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>editEmployee</from-outcome>
+			<to-view-id>/pages/employees/edit.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>confirmDeleteEmployee</from-outcome>
+			<to-view-id>/pages/employees/confirmDelete.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

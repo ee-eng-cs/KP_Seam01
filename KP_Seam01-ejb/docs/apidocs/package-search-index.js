@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"kp.company.controller"},{"l":"kp.company.data"},{"l":"kp.company.domain"},{"l":"kp.company.util"},{"l":"kp.company.ws"},{"l":"kp.company.ws.rest"},{"l":"kp.company.ws.xml"},{"l":"kp.company.ws.xml.client"},{"l":"kp.company.ws.xml.service"}]

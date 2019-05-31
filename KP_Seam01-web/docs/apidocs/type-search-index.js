@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"kp.company.ws.rest.service","l":"CompanyRESTService"},{"p":"kp.company.ws.xml.service","l":"CompanyWSImpl"},{"p":"kp.company.ws.rest.service","l":"JaxRsActivator"}]

@@ -1,0 +1,13 @@
+Add Datasource / Choose Template: MySQL
+Name: KpSeam01DS
+JNDI Name:
+	java:jboss/datasources/kp_seam01
+	
+Driver Name: mysql-connector-java-8.0.16.jar
+Driver Module Name: com.mysql
+Driver Class Name: com.mysql.cj.jdbc.Driver
+
+Connection URL:
+	jdbc:mysql://localhost:3306/kp_seam01?useLegacyDatetimeCode=false&serverTimezone=UTC
+User Name: kp
+Password: mikimiki

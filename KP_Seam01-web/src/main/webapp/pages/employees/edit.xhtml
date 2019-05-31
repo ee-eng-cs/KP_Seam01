@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:kp="http://java.sun.com/jsf/composite/composite_component_library"
+	template="/resources/templates/layout.xhtml">
+
+
+	<ui:define name="menu">
+		<ui:include src="/pages/siteNavigation.xhtml">
+			<ui:param name="page" value="6" />
+		</ui:include>
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="form">
+			<h:panelGrid columns="2" columnClasses="form-prompt,form-field"
+				rules="rows">
+				Department
+				<h:outputText class="form-field-read-only"
+					value="#{department.name}" />
+
+				First Name
+				<h:inputText id="firstName" size="30" maxlength="30"
+					styleClass="#{component.valid ? '' : 'error'}"
+					value="#{employee.firstName}" />
+
+				Last Name
+				<h:inputText id="lastName" size="30" maxlength="30"
+					styleClass="#{component.valid ? '' : 'error'}"
+					value="#{employee.lastName}" />
+
+				Title
+				<h:selectOneMenu value="#{employeeManagedBean.selectedTitleId}">
+					<f:selectItems value="#{titles}" var="t" itemValue="#{t.id}"
+						itemLabel="#{t.name}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+		</div>
+
+		<div style="clear: both;"></div>
+		<h:messages styleClass="errors" />
+
+		<kp:buttonsOkCancel actionOk="updateEmployeeAction"
+			actionCancel="cancelEmployeeAction"
+			backingBean="#{employeeManagedBean}" />
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,157 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.errors {
+  color: red;
+  font-weight: bold;
+}
+.error {
+    background: #FFAAAA;
+}
+/* *** DIV *** */
+div.menu {
+  width: 490px;
+  height: 25px;
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  background-color: #88EED0;
+  text-align: left;
+}
+div.home {
+  width: 490px;
+  height: 120px;
+  padding-left: 10px;
+  border-top: 1px solid black;
+  background-color: #CAE081;
+}
+div.form {
+  width: 500px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-top: 1px solid black;
+}
+div.links, div.buttons {
+  float:left;
+  border-top: 1px solid black;
+  width: 250px;
+  height: 50px;
+  padding-bottom: 5px;
+  background-color: #F2CD4F;
+  text-align: center;
+}
+div.links {
+  padding-top: 5px;
+}
+div.buttons {
+  padding-top: 25px;
+}
+div.summary {
+  width: 490px;
+  padding-left: 10px;
+  border-top: 1px solid black;
+  background-color: #FFEDE8;
+  padding-bottom: 5px;
+}
+div.ws-content {
+  width: 500px;
+  border-top: 1px solid black;
+  text-align: center;
+}
+div.ws-title, div.ws-host {
+  width: 490px;
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-top: 1px solid black;
+}
+div.ws-title {
+  background-color: #F68B36;
+}
+div.ws-host {
+  background-color: #CAE081;
+}
+div.footer {
+  clear: both;
+  width: 500px;
+  height: 25px;
+  background-color: #EF4335;
+  border-top: 1px solid black;
+}
+/* *** FORM *** */
+.form-prompt {
+  width: 240px;
+  text-align: right;
+  padding: 5px;
+}
+.form-field {
+  width: 240px;
+  text-align: left;
+  padding: 5px;
+}
+.form-field-read-only {
+  background-color: #CAE081;
+  padding: 5px;
+}
+/* *** LIST *** */
+.list-all { 
+  width: 500px;
+}
+.list-header { 
+  background-color: #F68B36;
+}
+.list-col {
+}
+.list-link-1, .list-link-2, .list-link-3 {
+  text-align: center;
+}
+.list-link-1 a, .list-link-2 a, .list-link-3 a {
+  text-decoration: none;
+}
+.list-link-1 a:hover, .list-link-2 a:hover, .list-link-3 a:hover {
+  text-decoration: underline;
+}
+.list-link-1 {
+  width: 60px;
+}
+.list-link-2 {
+  width: 35px;
+}
+.list-link-3 {
+  width: 45px;
+}
+.list-row { 
+  background-color: #E8EDFF;
+}
+.list-row:hover { 
+  background-color: #CAE081;
+}
+/* *** WS HOST *** */
+.ws-host-prompt {
+  text-align: left;
+  width: 150px;
+}
+.ws-host-field {
+  text-align: left;
+  width: 100px;
+}
+.ws-host-button {
+  text-align: left;
+}
+/* *** WS TABLE *** */
+table.ws {
+	width: 100%;
+}
+td.ws-r, td.ws-g, td.ws-b {
+	padding: 4px
+}
+td.ws-r {
+	border: 2px dotted red;
+}
+td.ws-g {
+	border: 2px dotted green;
+}
+td.ws-b {
+	border: 2px dotted blue;
+}

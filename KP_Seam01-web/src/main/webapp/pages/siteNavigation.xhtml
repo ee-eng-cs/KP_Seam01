@@ -1,0 +1,47 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/resources/templates/layout.xhtml">
+
+	<h:panelGroup rendered="#{page == 1}">Company</h:panelGroup>
+	<h:panelGroup rendered="#{page > 1}">
+		<h:commandLink value="Company"
+			action="#{departmentManagedBean.homeCompanyAction}" />
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{page >= 2}">&#160;&#187;&#160;</h:panelGroup>
+
+	<h:panelGroup rendered="#{page == 2}">Departments</h:panelGroup>
+	<h:panelGroup rendered="#{page > 2}">
+		<h:commandLink value="Departments"
+			action="#{departmentManagedBean.listDepartmentsAction}" />
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{page >= 3}">&#160;&#187;&#160;</h:panelGroup>
+
+	<h:panelGroup rendered="#{page == 3}">
+		<h:outputText value="Add"
+			rendered="#{departmentManagedBean.department.id == null}" />
+		<h:outputText value="Edit"
+			rendered="#{departmentManagedBean.department.id != null}" />
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{page == 4}">Delete</h:panelGroup>
+
+	<h:panelGroup rendered="#{page == 5}">Employees</h:panelGroup>
+	<h:panelGroup rendered="#{page > 5}">
+		<h:commandLink value="Employees" action="listEmployees" />
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{page >= 6}">&#160;&#187;&#160;</h:panelGroup>
+
+	<h:panelGroup rendered="#{page == 6}">
+		<h:outputText value="Add"
+			rendered="#{employeeManagedBean.employee.id == null}" />
+		<h:outputText value="Edit"
+			rendered="#{employeeManagedBean.employee.id != null}" />
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{page == 7}">Delete</h:panelGroup>
+</ui:component>

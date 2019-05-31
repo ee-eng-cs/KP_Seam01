@@ -1,0 +1,25 @@
+USE kp_seam01;
+
+CREATE TABLE Department (
+	id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(30),
+	INDEX(name)
+) engine=InnoDB;
+
+CREATE TABLE Title (
+	id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(30),
+	INDEX(name)
+) engine=InnoDB;
+
+CREATE TABLE Employee (
+	id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	first_name VARCHAR(30),
+	last_name VARCHAR(30),
+	department_id BIGINT UNSIGNED NOT NULL,
+	title_id BIGINT UNSIGNED NOT NULL,
+	INDEX(last_name)
+) engine=InnoDB;
+
+ALTER TABLE Employee ADD CONSTRAINT fk_employees_departments FOREIGN KEY (department_id) REFERENCES Department(id);
+ALTER TABLE Employee ADD CONSTRAINT fk_employees_titles FOREIGN KEY (title_id) REFERENCES Title(id);

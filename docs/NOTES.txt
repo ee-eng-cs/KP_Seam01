@@ -1,0 +1,14 @@
+-----------------------------------------
+ Department             | Employee      |
+ one-to-many            | many-to-one	|
+ mapped-by="department" |               |
+ INVERSE SIDE           | OWNING SIDE   |
+-----------------------------------------
+A bidirectional relationship has both an owning side and an inverse side.
+
+-----------------------------------------
+ Employee               | Title         |
+ many-to-one            |               |
+ OWNING SIDE            |               |
+-----------------------------------------
+A unidirectional relationship has only an owning side.

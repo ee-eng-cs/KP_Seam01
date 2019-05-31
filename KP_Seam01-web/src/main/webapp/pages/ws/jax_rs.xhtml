@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/resources/templates/layout.xhtml">
+
+	<ui:define name="menu">
+		<h:panelGroup>
+			<h:commandLink value="Company"
+				action="#{departmentManagedBean.homeCompanyAction}" />
+			&#160;&#187;&#160;Show Reports (RESTful Web Services)
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="content">
+		<script language="javascript">
+			function depLink() {
+				var depName = document.getElementById("depName").value;
+				var txt = "http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/dep/?depName=";
+				txt = txt + depName;
+				document.getElementById("depLink").href = txt;
+			}
+			function empLink() {
+				var empDepName = document.getElementById("empDepName").value;
+				var empName = document.getElementById("empName").value;
+				var txt = "http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/emp/?depName=";
+				txt = txt + empDepName + "&amp;empName=" + empName;
+				document.getElementById("empLink").href = txt;
+			}
+		</script>
+		<div class="ws-host">
+			<h:panelGrid columns="3"
+				columnClasses="ws-host-prompt,ws-host-field,ws-host-button"
+				rules="rows">
+					Web Services Host
+					<h:inputText id="host" size="10" value="#{endpointData.host}" />
+				<h:commandButton value="Update" action="JAX-RS" />
+			</h:panelGrid>
+		</div>
+		<div style="clear: both;"></div>
+		
+		<div class="ws-title">1. Find Departments (Media Type XML)</div>
+		<div style="clear: both;"></div>
+		<div class="ws-content">
+			<table class="ws">
+				<tr>
+					<td class="ws-g">Department Name</td>
+					<td class="ws-g"></td>
+				</tr>
+				<tr onmouseover="depLink()">
+					<td class="ws-r"><input id="depName" value="d-e-p-t-1" /></td>
+					<td class="ws-r"><a id="depLink"
+						href="http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/dep/"
+						target="_blank"> REST Endpoint </a></td>
+				</tr>
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+
+		<div class="ws-title">2. Find Employees (Media Type XML)</div>
+		<div style="clear: both;"></div>
+		<div class="ws-content">
+			<table class="ws">
+				<tr>
+					<td class="ws-g">Department Name</td>
+					<td class="ws-g">Employee Last Name</td>
+					<td class="ws-g"></td>
+				</tr>
+				<tr onmouseover="empLink()">
+					<td class="ws-r"><input id="empDepName" value="d-e-p-t-1" />
+					</td>
+					<td class="ws-r"><input id="empName" value="l-n-a-m-e-11" />
+					</td>
+					<td class="ws-r"><a id="empLink"
+						href="http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/emp/"
+						target="_blank"> REST Endpoint </a></td>
+				</tr>
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+
+		<div class="ws-title">3. Find All Titles (Media Type JSON)</div>
+		<div style="clear: both;"></div>
+		<div class="ws-content">
+			<table class="ws">
+				<tr>
+					<td class="ws-r"><h:outputLink
+							value="http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/titles/"
+							target="_blank">
+						REST Endpoint
+					</h:outputLink>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+
+		<div class="ws-title">4. Find Selected Title (Media Type JSON)</div>
+		<div style="clear: both;"></div>
+		<div class="ws-content">
+			<table class="ws">
+				<tr>
+					<td class="ws-g">Title Name</td>
+					<td class="ws-g"></td>
+				</tr>
+				<ui:repeat value="#{titles}" var="title">
+					<tr>
+						<td class="ws-r">#{title.name}</td>
+						<td class="ws-r"><h:outputLink
+								value="http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/title/#{title.id}"
+								target="_blank">
+							REST Endpoint
+						</h:outputLink>
+						</td>
+					</tr>
+				</ui:repeat>
+			</table>
+		</div>
+		<div style="clear: both;"></div>
+
+		<div class="ws-title">5. Find Employee Count Grouped By Title
+			(Media Type HTML)</div>
+		<div style="clear: both;"></div>
+		<div class="ws-content">
+			<table class="ws">
+				<tr>
+					<td class="ws-r"><h:outputLink
+							value="http://#{endpointData.host}:#{request.serverPort}#{request.contextPath}/rest/company/emp/grouped"
+							target="_blank">  
+							REST Endpoint
+						</h:outputLink>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</ui:define>
+</ui:composition>

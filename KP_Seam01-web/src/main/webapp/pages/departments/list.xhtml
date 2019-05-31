@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:kp="http://java.sun.com/jsf/composite/composite_component_library"
+	template="/resources/templates/layout.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/pages/siteNavigation.xhtml">
+			<ui:param name="page" value="2" />
+		</ui:include>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:dataTable border="1" cellpadding="5"
+			columnClasses="list-col,list-link-1,list-link-2,list-link-3"
+			frame="box" headerClass="list-header" rowClasses="list-row"
+			rules="all" styleClass="list-all" summary="Departments"
+			value="#{departments}" var="dep"
+			rendered="#{not empty departments}">
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+			    #{dep.name}
+			</h:column>
+			<h:column>
+				<h:commandLink value="Employees"
+					action="#{departmentManagedBean.listEmployeesAction(dep)}" />
+			</h:column>
+			<h:column>
+				<h:commandLink value="Edit"
+					action="#{departmentManagedBean.editDepartmentAction(dep)}" />
+			</h:column>
+			<h:column>
+				<h:commandLink value="Delete"
+					action="#{departmentManagedBean.confirmDeleteDepartmentAction(dep)}" />
+			</h:column>
+		</h:dataTable>
+		<div style="clear: both;"></div>
+		<div class="summary">
+		<h:panelGroup rendered="#{not empty departments}">
+			<p>
+				Average Number of Employees for Department: 
+				<h:outputText
+					value="${departments.stream().map(d -> d.employees.size()).average().get()}" >
+					<f:convertNumber pattern="#0.0" />
+				</h:outputText>
+			</p>
+			<p>
+				Total Number of Employees in Company:
+				${departments.stream().map(d -> d.employees.size()).sum()}
+			</p>
+		</h:panelGroup>
+		</div>
+		<kp:commandLinks linkLabel="Add Department"
+			linkAction="addDepartmentAction"
+			backingBean="#{departmentManagedBean}" />
+	</ui:define>
+</ui:composition>

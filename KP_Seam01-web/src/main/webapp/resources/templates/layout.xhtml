@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="shortcut icon" href="#{application.contextPath}/resources/images/favicon.ico" />
+		<link rel="icon" href="#{application.contextPath}/resources/images/favicon.ico" />
+		<h:outputStylesheet name="main.css" library="css" />
+		<title>KP Seam 01</title>
+	</h:head>
+	<h:body>
+		<!--  "CTRL + SHIFT + d" opens debugging information window -->
+		<ui:debug />
+
+		<div class="menu">
+			<h:form>
+				<ui:insert name="menu" />
+			</h:form>
+		</div>
+
+		<h:form>
+			<ui:insert name="content" />
+		</h:form>
+
+		<div class="footer"></div>
+	</h:body>
+</f:view>
+</html>
